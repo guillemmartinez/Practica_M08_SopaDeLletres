@@ -1,3 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Practica_M08_SopaDeLletres</string>
+
+    <string name="app_name">UF1. Material</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_material3_bis">Material3_bis</string>
+    <string name="title_activity_material4">Material4</string>
+    <string name="title_activity_action_bar">barraAccio</string>
+    <string name="cerca">Cerca</string>
+    <string name="ajustos">Ajustos</string>
+    <string name="title_activity_material30">Material30</string>
+    <string name="title_activity_base_de_dades">BaseDeDadesActivity</string>
+    <string name="title_activity_calendari">CalendariActivity</string>
+    <string name="title_activity_prova">ProvaActivity</string>
+
 </resources>
