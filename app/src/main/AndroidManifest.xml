@@ -10,17 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".BenvingutsActivity">
-           <!-- intent -->
-        </activity>
-        <activity
-            android:name=".ActionBarActivity"
-            android:label="@string/title_activity_action_bar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ActionBarActivity"
+            android:label="@string/title_activity_action_bar">
+
+        </activity>
+
+        <activity android:name=".SopaLletresActivity"></activity>
+
     </application>
 
 </manifest>
