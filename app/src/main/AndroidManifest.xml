@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.guillem.practica_m08_sopadelletres">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,13 +17,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ActionBarActivity"
-            android:label="@string/title_activity_action_bar">
+            android:label="@string/title_activity_action_bar" />
 
-        </activity>
+        <activity
+            android:name=".SopaLletresActivity"
+            android:parentActivityName=".BenvingutsActivity"/>
+        <activity
+            android:name=".WebviewActivity"
+            android:parentActivityName=".BenvingutsActivity"/>
 
-        <activity android:name=".SopaLletresActivity"></activity>
+
+
 
     </application>
 

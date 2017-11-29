@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
-public class BenvingutsActivity extends AppCompatActivity {
+public class BenvingutsActivity extends ActionBarActivity {
 
 
 
@@ -15,6 +19,7 @@ public class BenvingutsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benvinguts);
+
         Button btn = (Button)findViewById(R.id.playButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,6 +27,7 @@ public class BenvingutsActivity extends AppCompatActivity {
                 startActivity(new Intent(BenvingutsActivity.this, SopaLletresActivity.class));
             }
         });
-
     }
+
+
 }
