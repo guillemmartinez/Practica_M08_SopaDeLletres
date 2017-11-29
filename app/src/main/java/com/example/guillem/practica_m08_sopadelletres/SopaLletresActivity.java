@@ -51,18 +51,16 @@ public class SopaLletresActivity extends AppCompatActivity {
 
                 //Toast.makeText(getApplicationContext(), ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
                 paraula.add(((TextView) v).getText().toString());
-                Log.d("hola",paraula.toString());
+                Log.d("lletra premuda",paraula.toString());
+
                 // Toast.makeText(context, selector, duration); toast.show();
                 //v.setSelected(true);
                 if (pintar != 0)
-                    v.setBackgroundColor(0x00000000);
+                    v.setBackgroundColor(Color.TRANSPARENT);
                 else {
                     v.setBackgroundColor(Color.YELLOW);
                     pintar = 1;
                 }
-
-
-
             }
         });
     }
