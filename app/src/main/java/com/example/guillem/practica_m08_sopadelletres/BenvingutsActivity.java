@@ -20,7 +20,7 @@ public class BenvingutsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_benvinguts);
 
-        SopaLletresUtility.generarParaula(2);
+        SopaLletresUtility.generarParaulaVertical();
         Button btn = (Button)findViewById(R.id.playButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
