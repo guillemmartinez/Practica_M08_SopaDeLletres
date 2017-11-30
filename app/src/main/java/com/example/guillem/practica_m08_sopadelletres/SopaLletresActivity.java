@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SopaLletresActivity extends AppCompatActivity {
+public class SopaLletresActivity extends ActionBarActivity {
 
     GridView gridView;
     String numbers[] = new String[49];
@@ -27,7 +27,9 @@ public class SopaLletresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Random r = new Random();
+
         SopaLletresUtility.generarParaulaVertical();
+
         for(int i = 0; i < numbers.length; i++){
             char c = (char) (r.nextInt(26) + 'A');
             numbers[i] = String.valueOf(c);

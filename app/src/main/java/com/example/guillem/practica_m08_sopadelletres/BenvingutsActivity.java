@@ -25,6 +25,7 @@ public class BenvingutsActivity extends ActionBarActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SopaLletresUtility.inicialitzarTaula();
                 startActivity(new Intent(BenvingutsActivity.this, SopaLletresActivity.class));
             }
         });
