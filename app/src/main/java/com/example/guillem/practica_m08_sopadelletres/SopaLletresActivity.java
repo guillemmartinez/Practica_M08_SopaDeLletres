@@ -27,7 +27,7 @@ public class SopaLletresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Random r = new Random();
-
+        SopaLletresUtility.generarParaulaVertical();
         for(int i = 0; i < numbers.length; i++){
             char c = (char) (r.nextInt(26) + 'A');
             numbers[i] = String.valueOf(c);
