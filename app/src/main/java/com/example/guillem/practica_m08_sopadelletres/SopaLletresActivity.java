@@ -37,7 +37,7 @@ public class SopaLletresActivity extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.gridPrincipal);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, numbers);
+                android.R.layout.simple_list_item_1, SopaLletresUtility.taula);
 
         gridView.setAdapter(adapter);
 
