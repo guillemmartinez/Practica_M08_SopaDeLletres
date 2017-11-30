@@ -10,11 +10,11 @@ public final class SopaLletresUtility {
     public static String taula[];
 
 
-    public static void generarParaulaHoritzontal() {
+    public static void generarParaulaHoritzontal(int t) {
 
         boolean sortida = false;
 
-        for (int t = 0; t < 5; t++) {
+       // for (int t = 0; t < 5; t++) {
             do {
                 int pinicial = posicioInicial();
                 int pfinal = pinicial + paraules[t].length() - 1;
@@ -37,16 +37,14 @@ public final class SopaLletresUtility {
                     }
                 }
             } while (!sortida);
-            sortida = false;
-        }
-
-
+        //    sortida = false;
+        //}
     }
 
-    public static void generarParaulaVertical() {
+    public static void generarParaulaVertical(int t) {
         boolean sortida = false;
 
-        for (int t = 0; t < 5; t++) {
+        //for (int t = 0; t < 5; t++) {
             do {
                 int pinicial = posicioInicial();
                 int pfinal = (pinicial) + ((paraules[t].length() - 1) * 7);
@@ -70,14 +68,14 @@ public final class SopaLletresUtility {
                 }
             } while (!sortida);
             sortida = false;
-        }
+        //}
     }
 
-    public static void generarParaulaDiagonal() {
+    public static void generarParaulaDiagonal(int t) {
 
         boolean sortida = false;
 
-        for (int t = 0; t < 5; t++) {
+       // for (int t = 0; t < 5; t++) {
             do {
                 int pinicial = posicioInicial();
                 int pfinal = (pinicial) + ((paraules[t].length() - 1) * 7) + (paraules[t].length() - 1);
@@ -101,17 +99,26 @@ public final class SopaLletresUtility {
                 }
             } while (!sortida);
             sortida = false;
-        }
+       // }
     }
 
     public static void direccioParaula() {
+        Random r = new Random();
 
-        /*r = random(0-1);
-        if(r)
-            generarParaula();
-        else
-            generarParaulaVertical();*/
-    } //TODO
+        for (int t = 0; t<5; t++) {
+            switch (r.nextInt(3)) {
+                case 0:
+                    generarParaulaHoritzontal(t);
+                    break;
+                case 1:
+                    generarParaulaVertical(t);
+                    break;
+                case 2:
+                    generarParaulaDiagonal(t);
+                    break;
+            }
+        }
+    }
 
     public static void inicialitzarTaula(){
         taula = new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
