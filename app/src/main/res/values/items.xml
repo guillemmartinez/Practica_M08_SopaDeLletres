@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="items">
-        <item>pomes</item>
-        <item>peres</item>
+    <string-array name="paraules">
+        <item>ANDRO</item>
+        <item>JAVA</item>
+        <item>PYTHON</item>
+        <item>RUBY</item>
+        <item>PHP</item>
     </string-array>
 </resources>

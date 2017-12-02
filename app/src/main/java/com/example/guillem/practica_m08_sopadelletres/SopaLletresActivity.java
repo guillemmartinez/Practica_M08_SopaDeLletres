@@ -25,10 +25,12 @@ public class SopaLletresActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String[] paraulesXml;
+        // https://stackoverflow.com/questions/19617301/android-get-items-from-string-array-and-show-it-one-by-one-in-text-view
+        SopaLletresUtility.paraules =   getResources().getStringArray(R.array.paraules);
         Random r = new Random();
 
-        SopaLletresUtility.generarParaulaVertical();
+        SopaLletresUtility.direccioParaula();
 
         for(int i = 0; i < numbers.length; i++){
             char c = (char) (r.nextInt(26) + 'A');
