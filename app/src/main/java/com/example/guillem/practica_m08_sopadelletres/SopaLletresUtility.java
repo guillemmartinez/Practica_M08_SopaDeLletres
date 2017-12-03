@@ -7,113 +7,75 @@ import java.util.Random;
 public final class SopaLletresUtility {
 
     public static String paraules[];
+    public static int posicions[][];
     public static String taula[];
 
     /**
      * mètode encarregat d'escriure les paraules en horitzontal
      * @param t on t és igual a la posició dins l'array de la paraula que volem escriure
      */
-    public static void generarParaulaHoritzontal(int t) {
-
+    public static void generarParaula(int t, int tipus) {
         boolean sortida = false;
-
-        // for (int t = 0; t < 5; t++) {
-        do {
-            int pinicial = posicioInicial();
-            int pfinal = pinicial + paraules[t].length() - 1;
-            int igual = 0;
-            System.out.println("aaaaaaaaaaaaaaaaaaaaa" + t);
-
-            if (calcularFila(pinicial) == calcularFila(pfinal)) {
-                for (int j = 0; j < paraules[j].length() - 1; j++) {
-                    if (!taula[pinicial + j].equals(" ")) {
-                        igual = 1;
-                    }
-                }
-                if (igual == 0) {
-                    for (int i = 0; i <= (paraules[t].length() - 1); i++) {
-                        taula[pinicial + i] = Character.toString(paraules[t].charAt(i));
-                        System.out.println("char[" + i + "]" + taula[pinicial + i]);
-                    }
-                    System.out.println("true");
-                    sortida = true;
-                }
-            }
-        } while (!sortida);
-        //    sortida = false;
-        //}
-    }
-
-    /**
-     * mètode encarregat d'escriure les paraules en vertical
-     * @param t on t és igual a la posició dins l'array de la paraula que volem escriure
-     */
-    public static void generarParaulaVertical(int t) {
-        boolean sortida = false;
-
-        //for (int t = 0; t < 5; t++) {
-        do {
-            int pinicial = posicioInicial();
-            int pfinal = (pinicial) + ((paraules[t].length() - 1) * 7);
-            int igual = 0; // variable que controla si una paraula ja ocupa posicions dins la sopa de lletres
-            System.out.println("aaaaaaaaaaaaaaaaaaaaa" + t);
-
-
-            if (calcularColumna(pinicial) == calcularColumna(pfinal) && pfinal < 49) {
-                for (int j = 0, k = 0; j < paraules[j].length() - 1; j++, k += 7) { //comprovem que la paraula mai sobreescrigui una altra anterior abans d'escriure-la
-                    if (!taula[pinicial + k].equals(" ")) {
-                        igual = 1;
-                    }
-                }
-                if (igual == 0) {
-                    for (int i = 0, k = 0; i <= (paraules[t].length() - 1); i++, k += 7) { // si la posició està disponible llavors l'escriu
-                        taula[pinicial + k] = Character.toString(paraules[t].charAt(i));
-                        System.out.println("char[" + i + "]" + taula[pinicial + k]);
-                    }
-                    System.out.println("true");
-                    sortida = true;
-                }
-            }
+        int delta = 1;
+        switch (tipus){
+            case 0:
+                delta = 1;
+                break;
+            case 1:
+                delta = 7;
+                break;
+            case 2:
+                delta = 7+1;
+                break;
         }
-        while (!sortida); //repetim el procés per cada paraula fins que s'hagi pogut col·locar amb èxit
-        sortida = false;
-        //}
-    }
-
-
-    /**
-     * mètode encarregat d'escriure les paraules en diagonal
-     * @param t on t és igual a la posició dins l'array de la paraula que volem escriure
-     */
-    public static void generarParaulaDiagonal(int t) {
-
-        boolean sortida = false;
-
-        // for (int t = 0; t < 5; t++) {
+        int cmpt = 0;
         do {
             int pinicial = posicioInicial();
-            int pfinal = (pinicial) + ((paraules[t].length() - 1) * 7) + (paraules[t].length() - 1);
-            int igual = 0;
+            int pfinal = pinicial + (paraules[t].length() - 1) * delta;
+            boolean ple = false;
             System.out.println("aaaaaaaaaaaaaaaaaaaaa" + t);
-
-            if (calcularColumna(pinicial) < calcularColumna(pfinal) && pfinal < 49) {
-                for (int j = 0, k = 0; j < paraules[j].length() - 1; j++, k += 8) {
+            System.out.println("tipus: " + tipus + "delta: " + delta + "posicioinicial: " + pinicial + "t: " + t);
+            boolean error = false;
+            switch (tipus){
+                case 0:
+                    if (calcularFila(pinicial) != calcularFila(pfinal))
+                        error = true;
+                    break;
+                case 1:
+                    if(pfinal > 48)
+                        error = true;
+                    break;
+                case 2:
+                    if(calcularColumna(pinicial) > calcularColumna(pfinal) || pfinal > 48)
+                        error = true;
+                    break;
+            }
+            if (!error) {
+                System.out.println("estims dins error");
+                for (String n:taula) {
+                    System.out.println(n);
+                }
+                for (int j = 0, k = 0; j < paraules[t].length(); j++, k += delta) {
+                    System.out.println("a" + taula[pinicial + k] +"a");
                     if (!taula[pinicial + k].equals(" ")) {
-                        igual = 1;
+                        ple = true;
                     }
                 }
-                if (igual == 0) {
-                    for (int i = 0, k = 0; i <= (paraules[t].length() - 1); i++, k += 8) {
+                if (!ple) {
+                    for (int i = 0, k = 0; i < paraules[t].length(); i++, k+= delta) {
                         taula[pinicial + k] = Character.toString(paraules[t].charAt(i));
+                        posicions[t][i] = pinicial + k;
                         System.out.println("char[" + i + "]" + taula[pinicial + k]);
                     }
                     System.out.println("true");
                     sortida = true;
                 }
             }
+            cmpt++;
+            if(cmpt == 200){
+                System.exit(1);
+            }
         } while (!sortida);
-        sortida = false;
-        // }
     }
 
     /**
@@ -121,25 +83,21 @@ public final class SopaLletresUtility {
      */
     public static void direccioParaula() {
         Random r = new Random();
-
         for (int t = 0; t < 5; t++) {
-            switch (r.nextInt(3)) {
-                case 0:
-                    generarParaulaHoritzontal(t);
-                    break;
-                case 1:
-                    generarParaulaVertical(t);
-                    break;
-                case 2:
-                    generarParaulaDiagonal(t);
-                    break;
+            generarParaula(t, r.nextInt(3));
+        }
+        for(int t = 0; t < 5; t++){
+            for(int i= 0; i < 5; i++){
+                System.out.println("posicio[" + t + "]" + "[" + i + "]" + posicions[t][i]);
             }
         }
     }
 
     public static void inicialitzarTaula() {
         taula = new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
+        posicions = new int[5][8];
     }
+
 
     /**
      * funció que tria aleatoriament la posició de la primera lletra de la paraula en qüestió
@@ -178,5 +136,6 @@ public final class SopaLletresUtility {
         [28][29][30][31][32][33][34]
         [35][36][37][38][39][40][41]
         [42][43][44][45][46][47][48]
+
         */
 
