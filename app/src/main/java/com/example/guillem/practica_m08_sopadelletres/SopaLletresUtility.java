@@ -14,7 +14,7 @@ public final class SopaLletresUtility {
      * mètode encarregat d'escriure les paraules en horitzontal
      * @param t on t és igual a la posició dins l'array de la paraula que volem escriure
      */
-    public static void generarParaula(int t, int tipus) {
+    private static void generarParaula(int t, int tipus) {
         boolean sortida = false;
         int delta = 1;
         switch (tipus){
@@ -33,7 +33,6 @@ public final class SopaLletresUtility {
             int pinicial = posicioInicial();
             int pfinal = pinicial + (paraules[t].length() - 1) * delta;
             boolean ple = false;
-            System.out.println("aaaaaaaaaaaaaaaaaaaaa" + t);
             System.out.println("tipus: " + tipus + "delta: " + delta + "posicioinicial: " + pinicial + "t: " + t);
             boolean error = false;
             switch (tipus){
@@ -51,10 +50,10 @@ public final class SopaLletresUtility {
                     break;
             }
             if (!error) {
-                System.out.println("estims dins error");
+                /*System.out.println("estims dins error");
                 for (String n:taula) {
                     System.out.println(n);
-                }
+                }*/
                 for (int j = 0, k = 0; j < paraules[t].length(); j++, k += delta) {
                     System.out.println("a" + taula[pinicial + k] +"a");
                     if (!taula[pinicial + k].equals(" ")) {
@@ -72,7 +71,7 @@ public final class SopaLletresUtility {
                 }
             }
             cmpt++;
-            if(cmpt == 200){
+            if(cmpt == 400){
                 System.exit(1);
             }
         } while (!sortida);
@@ -81,19 +80,19 @@ public final class SopaLletresUtility {
     /**
      * mètode encarregat de decidir aleatoriament en quina direcció se situaran les paraules dins la sopa de lletres (horitzontal, diagonal o vertical)
      */
-    public static void direccioParaula() {
+    static void direccioParaula() {
         Random r = new Random();
         for (int t = 0; t < 5; t++) {
             generarParaula(t, r.nextInt(3));
         }
         for(int t = 0; t < 5; t++){
-            for(int i= 0; i < 5; i++){
+            for(int i= 0; i < 8; i++){
                 System.out.println("posicio[" + t + "]" + "[" + i + "]" + posicions[t][i]);
             }
         }
     }
 
-    public static void inicialitzarTaula() {
+    static void inicialitzarTaula() {
         taula = new String[]{" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
         posicions = new int[5][8];
     }
