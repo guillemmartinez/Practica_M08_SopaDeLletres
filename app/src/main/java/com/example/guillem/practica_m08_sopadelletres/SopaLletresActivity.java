@@ -1,5 +1,6 @@
 package com.example.guillem.practica_m08_sopadelletres;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ public class SopaLletresActivity extends ActionBarActivity {
     GridView gridView;
     String numbers[] = new String[49];
     ArrayList<Integer> lletresSelecio;
-
+    int f = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class SopaLletresActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Collections.sort(lletresSelecio);
                 boolean diferent = false;
+
                 for (int k = 0; k < 5; k++) {
                     System.out.println("paraula numero:" + k);
                     diferent = false;
@@ -61,6 +63,20 @@ public class SopaLletresActivity extends ActionBarActivity {
 
                         TextView text = (TextView) findViewById(R.id.textView + (k + 1));
                         text.setText(SopaLletresUtility.paraules[k]);
+                        f++;
+                        System.out.println("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"+f);
+
+                        if(f == 5){
+
+                            Button btn = (Button)findViewById(R.id.continueButton);
+                            btn.setVisibility(View.VISIBLE);
+                            btn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(SopaLletresActivity.this, PantallaFinalActivity.class));
+                                }
+                            });
+                        }
 
                     } else {
                         System.out.println("paraula diferent");
