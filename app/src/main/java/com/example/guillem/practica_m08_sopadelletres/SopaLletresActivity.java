@@ -67,13 +67,19 @@ public class SopaLletresActivity extends ActionBarActivity {
                     if (!diferent) {
                         System.out.println("paraula igual");
 
+                        if(k == 0) {
+                            TextView text = (TextView) findViewById(R.id.textView0);
+                            text.setText("hello");
+                        }else{
+                            TextView text = (TextView) findViewById(R.id.textView + k);
+                            text.setText("hello" + k);
+                        }
+
                     }else{
                         System.out.println("paraula diferent");
                     }
                 }
-
-                System.out.println(lletresSelecio.toString());
-
+                lletresSelecio = new ArrayList<>();
             }
         });
 
@@ -99,7 +105,6 @@ public class SopaLletresActivity extends ActionBarActivity {
                 lletresSelecio.add(position);
 
                 v.setBackgroundColor(Color.GREEN);
-
 
             }
         });
