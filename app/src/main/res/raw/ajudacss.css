@@ -1,0 +1,16 @@
+a{
+text-decoration: none;
+}
+
+h1,h3,h4{
+color:blue;
+}
+
+body{
+text-align: justify;
+}
+
+div{
+color: #d3d3d3;
+text-align: center !important;
+}
